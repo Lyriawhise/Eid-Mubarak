@@ -1,0 +1,486 @@
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f8a53 0%, #e6c619 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0l28-28v2L54 40h-2zm4 0l24-24v2L58 40h-2zm4 0l20-20v2L62 40h-2zm4 0l16-16v2L66 40h-2zm4 0l12-12v2L70 40h-2zm4 0l8-8v2l-6 6h-2zm4 0l4-4v2l-2 2h-2z'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            color: #f8f0c9;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .arabic-text {
+            font-family: 'Traditional Arabic', 'Arial', sans-serif;
+            color: #f8f8f8;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            direction: rtl;
+        }
+
+        /* Decorative Elements */
+        .decorative-line {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #f0d878, transparent);
+            margin: 15px auto 20px;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .lantern {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            opacity: 0.8;
+            z-index: 0;
+            animation: sway 3s infinite alternate ease-in-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Atur posisi spesifik */
+        .lantern:nth-child(1) {
+            top: 15vh;
+            left: 5vw;
+        }
+
+        .lantern:nth-child(2) {
+            top: 10vh;
+            right: 5vw;
+        }
+
+        .ketupat-container,
+        .message-modal,
+        .button-container,
+        .prayer-times,
+        .zakat-calculator {
+            position: relative;
+            z-index: 2;
+        }
+
+        .lantern img {
+            width: 300%;
+            height: 300%;
+            object-fit: contain;
+        }
+
+        @keyframes sway {
+            0% {
+                transform: translateX(-5px) rotate(-3deg);
+            }
+
+            100% {
+                transform: translateX(5px) rotate(3deg);
+            }
+        }
+
+        /* Ketupat Container */
+        .ketupat-container {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 400px;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(230, 198, 25, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Particles */
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #f0d878;
+            border-radius: 50%;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        /* Ketupat Style */
+        .ketupat {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            transform-origin: center;
+            top: -100px;
+            animation: fall linear forwards;
+            z-index: 10;
+        }
+
+        .ketupat img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3));
+        }
+
+        .ketupat:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .ketupat.opened {
+            animation: open 0.5s forwards;
+        }
+
+        @keyframes fall {
+            to {
+                top: 100%;
+            }
+        }
+
+        @keyframes open {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3) rotate(15deg);
+            }
+
+            100% {
+                transform: scale(0.8) rotate(0deg);
+                opacity: 0.5;
+            }
+        }
+
+        /* Message Modal */
+        .message-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .message-modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .message-content {
+            background: linear-gradient(135deg, #107c4c 0%, #0a5d34 100%);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 90%;
+            width: 500px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            border: 2px solid #e9d16e;
+        }
+
+        .message-decoration {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-image: url("lentern.png");
+            /* Replace with moon and star image */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .message-text {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .message-source {
+            color: #f0d878;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Buttons */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: #0a5d34;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: #074627;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #e9d16e;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: #d6be5a;
+            transform: translateY(-2px);
+        }
+
+        .btn i {
+            font-size: 1.2rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .audio-player {
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 10px 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .audio-player-text {
+            color: white;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .audio-btn {
+            border: none;
+            background: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .audio-btn:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .ketupat {
+                width: 60px;
+                height: 60px;
+            }
+
+            .message-text {
+                font-size: 1.2rem;
+            }
+
+            .arabic-text {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Prayer Times */
+        .prayer-times {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        .prayer-times h2 {
+            color: #f0d878;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .times-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .time-item {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .time-name {
+            color: #f0d878;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .time-value {
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 30px;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        .footer-decoration {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .footer-decoration span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #e9d16e;
+            opacity: 0.7;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+
+        /* Zakat Calculator */
+        .zakat-calculator {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        .zakat-calculator h2 {
+            color: #f0d878;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .zakat-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .zakat-form label {
+            color: white;
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .zakat-form input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            width: 100%;
+        }
+
+        .zakat-result {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            color: white;
+            display: none;
+        }
+
+        .zakat-result.visible {
+            display: block;
+        }

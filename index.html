@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Ketupat Surprise - Selamat Idul Fitri</title>
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none'">
+    <title>Virtual Ketupat Surprise - Selamat Idul Fitri</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Virtual Ketupat Surprise</h1>
+        <p class="subtitle">Klik ketupat untuk menerima pesan Idul Fitri</p>
+        <p class="arabic-text">عيد مبارك</p>
+
+        <div class="decorative-line"></div>
+
+        <!-- Decorative Lanterns -->
+        <div class="lantern" style="top: 120px; left: 10%;">
+            <img src="lentern.png" alt="Lantern" />
+        </div>
+        <div class="lantern" style="top: 80px; right: 10%;">
+            <img src="lentern.png" alt="Lantern" />
+        </div>
+
+        <!-- Audio Player for Takbir -->
+        <div class="audio-player">
+            <span class="audio-player-text">Takbir Idul Fitri</span>
+            <div class="audio-controls">
+                <button class="audio-btn" id="playTakbir"><i class="fas fa-play"></i></button>
+                <button class="audio-btn" id="pauseTakbir"><i class="fas fa-pause"></i></button>
+            </div>
+        </div>
+
+        <div class="ketupat-container" id="ketupatContainer"></div>
+
+        <div class="button-container">
+            <button class="btn btn-primary" id="resetBtn">
+                <i class="fas fa-redo"></i> Acak Ulang
+            </button>
+            <button class="btn btn-secondary" id="muteBtn">
+                <i class="fas fa-volume-up"></i> <span id="soundText">Suara: On</span>
+            </button>
+            <button class="btn btn-primary" id="toggleZakatBtn">
+                <i class="fas fa-calculator"></i> Kalkulator Zakat
+            </button>
+        </div>
+
+        <!-- Zakat Calculator -->
+        <div class="zakat-calculator" id="zakatCalculator" style="display: none;">
+            <h2>Kalkulator Zakat Fitrah</h2>
+            <div class="zakat-form">
+                <div>
+                    <label for="familyMembers">Jumlah Anggota Keluarga:</label>
+                    <input type="number" id="familyMembers" min="1" value="1">
+                </div>
+                <div>
+                    <label for="ricePrice">Harga Beras (Rp/kg):</label>
+                    <input type="number" id="ricePrice" min="0" value="15000">
+                </div>
+                <button class="btn btn-secondary" id="calculateZakat">
+                    <i class="fas fa-calculator"></i> Hitung Zakat
+                </button>
+            </div>
+            <div class="zakat-result" id="zakatResult">
+                <p>Total Zakat Fitrah: <span id="zakatTotal">Rp 0</span></p>
+                <p>Catatan: Zakat fitrah sebesar 2.5 kg beras per orang atau senilai dengan harga beras.</p>
+            </div>
+        </div>
+
+        <!-- Eid Prayer Times -->
+        <div class="prayer-times" id="prayerTimes">
+            <h2>Jadwal Sholat Idul Fitri</h2>
+            <div class="times-grid">
+                <div class="time-item">
+                    <div class="time-name">Jakarta</div>
+                    <div class="time-value">06:30 WIB</div>
+                </div>
+                <div class="time-item">
+                    <div class="time-name">Bandung</div>
+                    <div class="time-value">06:15 WIB</div>
+                </div>
+                <div class="time-item">
+                    <div class="time-name">Surabaya</div>
+                    <div class="time-value">06:00 WIB</div>
+                </div>
+                <div class="time-item">
+                    <div class="time-name">Medan</div>
+                    <div class="time-value">07:00 WIB</div>
+                </div>
+                <div class="time-item">
+                    <div class="time-name">Makassar</div>
+                    <div class="time-value">06:45 WITA</div>
+                </div>
+                <div class="time-item">
+                    <div class="time-name">Denpasar</div>
+                    <div class="time-value">06:30 WITA</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-decoration">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <p>Selamat Hari Raya Idul Fitri</p>
+            <p>١٤٤٦ هـ / 2025 م</p>
+            <p class="subtitle">Semoga taqwa kita diterima dan dosa kita diampuni</p>
+        </footer>
+    </div>
+
+    <!-- Message Modal -->
+    <div class="message-modal" id="messageModal">
+        <div class="message-content">
+            <div class="message-decoration"></div>
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="message-text" id="messageText"></div>
+            <div class="message-source" id="messageSource"></div>
+            <div class="share-buttons">
+                <button class="btn btn-secondary" id="shareWhatsApp">
+                    <i class="fab fa-whatsapp"></i> Bagikan via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
