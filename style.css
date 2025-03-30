@@ -15,7 +15,7 @@
 
         body::before {
             content: "";
-            position: absolute;
+            position: fixed; 
             top: 0;
             left: 0;
             width: 100%;
@@ -25,6 +25,7 @@
         }
 
         .container {
+            position: relative
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
@@ -483,142 +484,3 @@
         .zakat-result.visible {
             display: block;
         }
-
-        /* Mobile Responsive Styles */
-@media (max-width: 480px) {
-    /* Adjust base font sizes */
-    h1 {
-        font-size: 1.8rem;
-        margin-bottom: 15px;
-    }
-    
-    .subtitle {
-        font-size: 1rem;
-        margin-bottom: 10px;
-    }
-    
-    .arabic-text {
-        font-size: 1.1rem;
-        margin-bottom: 20px;
-    }
-    
-    /* Container adjustments */
-    .container {
-        padding: 15px 10px;
-    }
-    
-    /* Ketupat container */
-    .ketupat-container {
-        height: 50vh;
-        min-height: 300px;
-        margin-bottom: 15px;
-    }
-    
-    /* Ketupat size */
-    .ketupat {
-        width: 50px;
-        height: 50px;
-    }
-    
-    /* Hide some lanterns on very small screens */
-    .lantern:nth-child(1),
-    .lantern:nth-child(2) {
-        display: none;
-    }
-    
-    /* Modal adjustments */
-    .message-content {
-        padding: 20px 15px;
-        width: 95%;
-    }
-    
-    .message-text {
-        font-size: 1.1rem;
-        margin-bottom: 15px;
-    }
-    
-    .message-source {
-        font-size: 0.8rem;
-    }
-    
-    /* Button adjustments */
-    .button-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .btn {
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-    
-    /* Prayer times grid */
-    .times-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    /* Audio player */
-    .audio-player {
-        flex-direction: column;
-        padding: 8px 12px;
-        gap: 8px;
-    }
-    
-    .audio-player-text {
-        margin-right: 0;
-        margin-bottom: 5px;
-        font-size: 0.9rem;
-    }
-    
-    /* Zakat calculator */
-    .zakat-calculator {
-        padding: 15px;
-    }
-    
-    .zakat-calculator h2 {
-        font-size: 1.2rem;
-    }
-    
-    .zakat-form input {
-        padding: 8px;
-    }
-    
-    /* Footer adjustments */
-    footer {
-        font-size: 0.8rem;
-        margin-top: 20px;
-    }
-    
-    /* Decorative elements */
-    .decorative-line {
-        margin: 10px auto 15px;
-    }
-}
-
-/* Additional adjustments for very small screens */
-@media (max-width: 360px) {
-    h1 {
-        font-size: 1.6rem;
-    }
-    
-    .arabic-text {
-        font-size: 1rem;
-    }
-    
-    .ketupat {
-        width: 45px;
-        height: 45px;
-    }
-    
-    .times-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .btn {
-        max-width: 100%;
-    }
-}
